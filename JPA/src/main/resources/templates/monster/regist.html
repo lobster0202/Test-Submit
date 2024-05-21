@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>regist monster</title>
+</head>
+<body>
+    <h1>신규 메뉴 등록</h1>
+
+    <form action="/monster/regist" method="post">
+        <label> 팰 이름 : </label><input type="text" name="palName"><br>
+        <label> 팰 번호 : </label><input type="number" name="palNo"><br>
+        <label> 등급 : </label>
+            <select name="palGrade" id="palGrade">
+            </select> <br>
+        <label> 팰 속성 : </label>
+            <select name="palType">
+                <option value="물">물</option>
+                <option value="불">불</option>
+                <option value="빛">빛</option>
+            </select><br>
+        <input type="submit" value="몬스터 등록">
+    </form>
+
+    <script>
+        fetch('/monster/grade')
+            .then(res => res.json())
+            .then(data => {
+                const $palGrade = document.getElementById('palGrade');
+
+                for(let index in data) {
+                    const $option = document.createElement('option');
+                    $option.value = data[index].palGrade;
+                    $option.textContent = data[index].gradeName;
+
+                    $palGrade.appendChild($option);
+                }
+            });
+    </script>
+</body>
+</html>

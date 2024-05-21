@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>search result</title>
+</head>
+<body>
+    <h1>[[${palNo}]]을 초과하는 몬스터 목록</h1>
+    <table>
+        <tr>
+            <th>팰 번호</th>
+            <th>팰 이름</th>
+            <th>팰 속성</th>
+            <th>팰 등급</th>
+        </tr>
+        <tr th:each="monster : ${ monsterList }">
+            <th th:text="${ monster.palNo }"></th>
+            <th th:text="${ monster.palName }"></th>
+            <th th:text="${ monster.palType }"></th>
+            <th th:text="${ monster.palGrade }"></th>
+        </tr>
+    </table>
+</body>
+</html>
